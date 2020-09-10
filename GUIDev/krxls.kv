@@ -1,0 +1,109 @@
+<WindowManager>:
+    LoginPage:
+    RegisterPage:
+
+
+<LoginPage>:
+    username: username
+    password: password
+    login_title: login_title
+    name: "lp"
+    GridLayout:
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.2, 0.9, 0.6
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        cols: 1
+        Label:
+            id: login_title
+            text: "Login:"
+            size_hint: 1, 0.3
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Line:
+                    width: 1
+                    rectangle: self.x, self.y, self.width, self.height
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Username"
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Line:
+                        width: 1
+                        rectangle: self.x, self.y, self.width, self.height
+            TextInput:
+                id: username
+                multiline: "False"
+            Label:
+                text: "Password"
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Line:
+                        width: 1
+                        rectangle: self.x, self.y, self.width, self.height
+            TextInput:
+                id: password
+                multiline: "False"
+                password: "True"
+            Button:
+                text: "Sign up"
+                background_color: 235/255, 216/255, 52/255, 0.6
+                on_release:
+                    app.root.current = "rp"
+                    root.manager.transition.direction = "left"
+                canvas.before:
+                    Color:
+                        rgba: 235, 235, 52, 1
+                    Line:
+                        width: 1
+                        rectangle: self.x, self.y, self.width, self.height
+            Button:
+                text: "Sign in!"
+                on_release: root.validate()
+                background_color: 235/255, 216/255, 52/255, 0.6
+                canvas.before:
+                    Color:
+                        rgba: 235, 235, 52, 1
+                    Line:
+                        width: 1
+                        rectangle: self.x, self.y, self.width, self.height
+
+
+<RegisterPage>:
+    name: "rp"
+    username: username
+    password: password
+    register_title: register_title
+    GridLayout:
+        cols: 1
+        Label:
+            id: register_title
+            text: "Register:"
+            size_hint: 1, 0.3
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Username"
+            TextInput:
+                id: username
+                multiline: "False"
+            Label:
+                text: "Password"
+            TextInput:
+                id: password
+                multiline: "False"
+                password: "True"
+            Button:
+                text: "Sign in"
+                on_release:
+                    app.root.current = "lp"
+                    root.manager.transition.direction = "right"
+            Button:
+                text: "Sign Up!"
+                on_release: root.validate()
